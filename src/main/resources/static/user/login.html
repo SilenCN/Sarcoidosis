@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>肺结节检测系统</title>
+
+    <!--图标样式-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css'>
+
+    <link rel="stylesheet" href="login.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+</head>
+
+<body>
+
+<h2>肺结节检测系统</h2>
+<div class="container" id="container">
+    <div class="form-container sign-up-container" id="vue-register">
+        <form action="">
+            <h1>{{message}}</h1>
+            <dev><p style="color: red;height: 10px;float: left" >{{errorMessage}}</p><p style="color: black;height: 10px;float: left" >{{successMessage}}</p></dev>
+            <input type="text" placeholder="名称" v-model="nickname"/>
+            <input type="username" placeholder="邮箱" v-model="username" />
+            <input type="password" placeholder="密码" v-model="password"/>
+            <input type="password" placeholder="确认密码" v-model="rePassword"/>
+            <button v-on:click="registerClick" type="button">注册</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container" id="vue-login">
+        <form action="" >
+            <h1>{{message}}</h1>
+            <p style="color: red;height: 10px" >{{errorMessage}}</p>
+            <input type="email" placeholder="邮箱" v-model="username"/>
+            <input type="password" placeholder="密码" v-model="password" />
+            <a href="#">忘记密码？</a>
+            <button v-on:click="loginClick" type="button">登录</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>欢迎回来！</h1>
+                <p>请您先登录的个人信息，进行操作。</p>
+                <button class="ghost" id="signIn">登录</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>你好朋友！</h1>
+                <p>输入您的个人信息注册成为会员。</p>
+                <button class="ghost" id="signUp">注册</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
+<script  src="login.js"></script>
+</body>
+
+</html>
